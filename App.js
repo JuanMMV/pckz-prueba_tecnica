@@ -6,25 +6,18 @@
  * @flow strict-local
  */
 
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Image,
-  Button,
-} from 'react-native';
-import { CreateRoom } from './src/screens/CreateRoom';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {CreateRoomScreen} from './src/screens/CreateRoomScreen';
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-
+const Stack = createNativeStackNavigator();
 const App = () => {
   return (
-    <CreateRoom />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="cretaRoom" component={CreateRoomScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

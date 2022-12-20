@@ -1,16 +1,19 @@
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button, Image} from 'react-native';
+import ButtonComponent from '../components/ButtonComponent';
 
-export const CreateRoom = () => {
+export const CreateRoomScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.logo}>
         <Text style={{fontSize: 25, color: 'white'}}>LOGO</Text>
       </View>
       <View style={styles.card}>
-        <Text>Hola</Text>
+        <Image source={require('../../assets/clock.svg')} />
+        <Text style={{color:'#ccc', fontSize:20}}>No hay jugadores aún.</Text>
+        <Text style={{fontSize:22}}>+ Agregar Jugadores</Text>
       </View>
-      <View style={styles.buttonContainer}>
-        <Button title="Enviar" />
+      <View style={{width: '80%'}}>
+        <ButtonComponent title={'BOTON titulo'} color= {'#3580FF'}/>
       </View>
     </View>
   );
@@ -22,8 +25,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#848482',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingTop: 30,
+    justifyContent: 'space-evenly',
+    paddingVertical:20,
   },
   card: {
     backgroundColor: 'white',
@@ -43,6 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#ccc',
     borderRadius: 50,
+    marginTop:10
   },
   buttonContainer: {
     marginRight: 40,
