@@ -57,7 +57,6 @@ const AddPlayerInModal = () => {
               );
             })}
           </View>
-          <Text style={{color: 'red', marginLeft: 19}}>Ingresa un nombre</Text>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}

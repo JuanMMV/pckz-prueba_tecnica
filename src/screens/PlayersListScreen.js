@@ -11,15 +11,6 @@ const PlayersListScreen = () => {
   const saveGroup = useSelector(state => state.group);
   const users = saveGroup.groupUsers;
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       await getData('11faf734-0286-4cb2-9a3a-2c89a64fe6c5');
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   })();
-  // }, []);
 
   const toDetailGroup = () => {
     navigation.push('cretaRoom')

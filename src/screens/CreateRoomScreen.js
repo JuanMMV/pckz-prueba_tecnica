@@ -11,15 +11,6 @@ export const CreateRoomScreen = () => {
   const saveGroup = useSelector(state => state.group);
   const [data, setData] = useState('')
 
-  useEffect(() => {
-    (async () => {
-      try {
-        console.log(getAllKeys())
-      } catch (err) {
-        console.log(err);
-      }
-    })();
-  }, []);
 
   console.log('la de data es --------')
   console.log(data)
