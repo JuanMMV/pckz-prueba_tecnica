@@ -1,20 +1,49 @@
-import {StyleSheet, Text, View, Button, Image} from 'react-native';
+import {StyleSheet, Text, View, Button, Image, Pressable} from 'react-native';
 import ButtonComponent from '../components/ButtonComponent';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useEffect, useState} from 'react';
+import NoPlayers from '../components/NoPlayers';
+import { useSelector } from 'react-redux';
+import { getAllKeys, getData } from '../services/locaStorage';
+
 
 export const CreateRoomScreen = () => {
+  const saveGroup = useSelector(state => state.group);
+  const [data, setData] = useState('')
+
+  useEffect(() => {
+    (async () => {
+      try {
+        console.log(getAllKeys())
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+
+  console.log('la de data es --------')
+  console.log(data)
+  console.log('fin-------------')
   return (
     <View style={styles.container}>
-      <View style={styles.logo}>
-        <Text style={{fontSize: 25, color: 'white'}}>LOGO</Text>
-      </View>
-      <View style={styles.card}>
-        <Image source={require('../../assets/clock.svg')} />
-        <Text style={{color:'#ccc', fontSize:20}}>No hay jugadores aún.</Text>
-        <Text style={{fontSize:22}}>+ Agregar Jugadores</Text>
-      </View>
-      <View style={{width: '80%'}}>
-        <ButtonComponent title={'BOTON titulo'} color= {'#3580FF'}/>
-      </View>
+        <View style={styles.logo}>
+          <Text style={{fontSize: 25, color: 'white'}}>LOGO</Text>
+        </View>
+        <View style={styles.card}>
+          <NoPlayers />
+          <View style={styles.buttonHistory}>
+            <ButtonComponent
+              title={'Historial'}
+              bgcolor={'orange'}
+              icon={'clock-time-six-outline'}
+              colorIcon={'white'}
+              size={20}
+            />
+          </View>
+        </View>
+        <View style={{width: '80%'}}>
+          <ButtonComponent title={'CONFIRMAR'} bgcolor={'#0083E0'} />
+        </View>
     </View>
   );
 };
@@ -26,7 +55,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    paddingVertical:20,
+    paddingVertical: 20,
+  },
+  logo: {
+    width: 150,
+    height: 58,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#ccc',
+    borderRadius: 50,
+    marginTop: 10,
   },
   card: {
     backgroundColor: 'white',
@@ -38,15 +77,16 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 20,
   },
-  logo: {
-    width: 150,
-    height: 58,
-    display: 'flex',
+  addPlayerCard: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ccc',
-    borderRadius: 50,
-    marginTop:10
+    justifyContent: 'flex-end',
+  },
+  buttonHistory: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    paddingBottom: 20,
+    width: '80%',
   },
   buttonContainer: {
     marginRight: 40,
@@ -60,3 +100,4 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
   },
 });
+
